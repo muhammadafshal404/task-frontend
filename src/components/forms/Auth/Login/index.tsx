@@ -10,6 +10,7 @@ import { loginUser } from "../../../../apis/auth.api";
 import { MESSAGES, ROUTES } from "../../../../utils/constant";
 import { MailOutlined, UnlockOutlined } from "@ant-design/icons";
 import { Button, Col, Form, Input, Row, notification } from "antd";
+import { useSignin } from "../../../../hooks/useLogin";
 
 interface response {
   statusCode: number;
@@ -25,8 +26,9 @@ const initialValues = {
 };
 
 const LoginForm = () => {
-  const navigate = useNavigate();
   const [form] = Form.useForm();
+  const { login } = useSignin();
+  const navigate = useNavigate();
   const [loader, setLoader] = useState<boolean>(false);
 
   const onFinish = async (values: any) => {
@@ -38,6 +40,7 @@ const LoginForm = () => {
     const response: response = await loginUser(payload);
     if (response?.access_token) {
       localStorage.setItem("token", JSON.stringify(response?.access_token));
+      await login(JSON.stringify(response?.access_token));
       notification.open({
         message: MESSAGES.LOGIN_SUCCESS,
       });
@@ -59,7 +62,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
+    <div style={styles.loginForm}>
       <div style={FormStyles.loginContainer}>
         <a href="">
           <div>

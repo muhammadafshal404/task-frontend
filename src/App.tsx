@@ -1,15 +1,17 @@
-import { ConfigProvider } from "antd";
-import { BrowserRouter } from "react-router-dom";
-
 import "./App.css";
 import Router from "./Routes";
+import { ConfigProvider } from "antd";
 import { customTheme } from "./theme";
+import { BrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
     <ConfigProvider theme={customTheme}>
       <BrowserRouter>
-        <Router />
+        <AuthProvider>
+          <Router />
+        </AuthProvider>
       </BrowserRouter>
     </ConfigProvider>
   );

@@ -2,20 +2,24 @@ import { Layout } from "antd";
 import { styles } from "./styles";
 import Login from "./views/Auth/Login";
 import { ROUTES } from "./utils/constant";
+import Dashboard from "./views/Dashboard";
 import PrivateRoute from "./ProtectedRoute";
 import { Routes, Route } from "react-router-dom";
 import HeaderComponent from "./components/Header";
+import { useAuthContext } from "./hooks/useAuthContext";
 import PublicRoute from "./PublicRoute";
-import Dashboard from "./views/Dashboard";
+import Category from "./views/Category";
+import Car from "./views/Car";
 
 const Router = () => {
+  const { user } = useAuthContext();
   return (
     <Layout>
-      <PrivateRoute>
+      {user && (
         <Layout.Header style={styles.header}>
           <HeaderComponent />
         </Layout.Header>
-      </PrivateRoute>
+      )}
       <Layout.Content style={styles.content}>
         <Routes>
           <Route
@@ -23,6 +27,22 @@ const Router = () => {
             element={
               <PrivateRoute>
                 <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={ROUTES.CATEGORY}
+            element={
+              <PrivateRoute>
+                <Category />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={ROUTES.CAR}
+            element={
+              <PrivateRoute>
+                <Car />
               </PrivateRoute>
             }
           />

@@ -6,6 +6,8 @@ export const FormStyles = createStyles({
     backgroundColor: "white",
     boxShadow: `0 4px 8px 0 ${COLORS.CARD_SHADOW}, 0 6px 20px 0 ${COLORS.CARD_SHADOW}`,
     borderRadius: "8px",
+    width: "500px",
+    marginTop: "80px",
   },
   loginTextfield: {
     paddingLeft: "8%",

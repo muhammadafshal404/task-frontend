@@ -16,4 +16,9 @@ export const styles = createStyles({
   input: {
     color: COLORS.LIGHT_BLACK,
   },
+  loginForm: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });

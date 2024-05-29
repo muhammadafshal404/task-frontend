@@ -30,17 +30,13 @@ export default function HeaderComponent() {
         key={MENU_ITEM_KEYS.ROOT}
         onClick={(value) => setSelectedRoute(() => value?.key)}
       >
-        <Link to={ROUTES.ROOT} state={{ id: Math.random() }}>
-          Dashboard
-        </Link>
+        <Link to={ROUTES.ROOT}>Dashboard</Link>
       </MenuItem>
       <MenuItem
         key={MENU_ITEM_KEYS.CATEGORIES}
         onClick={(value) => setSelectedRoute(() => value?.key)}
       >
-        <Link to={ROUTES.CATEGORY} state={{ id: Math.random() }}>
-          Categories
-        </Link>
+        <Link to={ROUTES.CATEGORY}>Categories</Link>
       </MenuItem>
       <MenuItem
         key={MENU_ITEM_KEYS.CARS}
