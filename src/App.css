@@ -1,42 +1,128 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* @import "~antd/dist/antd.css"; */
+.App {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-@keyframes logo-spin {
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.component-content {
+  padding: 3em;
+}
+
+.disabled-link {
+  pointer-events: none;
+}
+
+.drawer {
+  padding: 2em;
+}
+
+.drawer-content {
+  padding: 2em;
+}
+
+.drawer-components {
+  margin-top: 1em;
+}
+
+.gray {
+  color: gray;
+}
+
+.black {
+  color: black;
+}
+
+@keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.ant-picker-panels {
+  display: flex;
+  flex-direction: column;
 }
 
-.card {
-  padding: 2em;
+.ant-picker-panels > *:last-child .ant-picker-body {
+  /* to make calendar responsive */
+  display: none !important;
 }
 
-.read-the-docs {
-  color: #888;
+.ant-col-lg-13 {
+  max-width: 100%;
+}
+.resource-form .ant-col.ant-form-item-label,
+.project-form .ant-col.ant-form-item-label {
+  display: flex;
+}
+.resource-form .ant-col.ant-form-item-control,
+.project-form .ant-col.ant-form-item-control {
+  margin-right: 16px;
+}
+
+.ant-picker-panel {
+  height: 350px;
+}
+
+.bold-row td {
+  font-weight: bold;
+}
+
+.ant-timeline-item-label {
+  width: auto !important;
+  padding-right: 5px !important;
+}
+
+.ant-timeline-item-tail {
+  inset-inline-start: 9% !important;
+}
+
+.ant-timeline-item-content {
+  inset-inline-start: calc(9% - 4px) !important;
+  width: 70% !important;
+}
+.ant-timeline-item-head {
+  inset-inline-start: 9% !important;
+}
+
+.custom-badge .ant-badge-status-dot {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.preview_image_icon .anticon-eye {
+  width: 100% !important;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
