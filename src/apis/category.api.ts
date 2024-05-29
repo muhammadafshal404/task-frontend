@@ -1,0 +1,46 @@
+import { doDelete, doGet, doPatch, doPost } from "../utils/request";
+
+export const getAllCatogories = async () => {
+  try {
+    const response = await doGet("/category");
+    return response;
+  } catch (err) {
+    return err;
+  }
+};
+
+export const getCategory = async (id: string) => {
+  try {
+    const response = await doGet(`/category/${id}`);
+    return response;
+  } catch (err) {
+    return err;
+  }
+};
+
+export const editCategory = async (body: object, id: string) => {
+  try {
+    const response = await doPatch(`/category/${id}`, body);
+    return response;
+  } catch (err: any) {
+    return err;
+  }
+};
+
+export const createCategory = async (body: object) => {
+  try {
+    const response = await doPost("/category/", body);
+    return response;
+  } catch (err: any) {
+    return err;
+  }
+};
+
+export const deleteCategory = async (id: string) => {
+  try {
+    const response = await doDelete(`/category/${id}`, {});
+    return response;
+  } catch (err: any) {
+    return err;
+  }
+};

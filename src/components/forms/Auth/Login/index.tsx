@@ -12,14 +12,6 @@ import { MailOutlined, UnlockOutlined } from "@ant-design/icons";
 import { Button, Col, Form, Input, Row, notification } from "antd";
 import { useSignin } from "../../../../hooks/useLogin";
 
-interface response {
-  statusCode: number;
-  err: any;
-  data: [];
-  access_token: any;
-  statusText: string;
-}
-
 const initialValues = {
   username: null,
   password: null,
@@ -37,7 +29,7 @@ const LoginForm = () => {
       email: values?.email.toLowerCase(),
       password: values?.password,
     };
-    const response: response = await loginUser(payload);
+    const response: any = await loginUser(payload);
     if (response?.access_token) {
       localStorage.setItem("token", JSON.stringify(response?.access_token));
       await login(JSON.stringify(response?.access_token));

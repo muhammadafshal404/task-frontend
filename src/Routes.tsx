@@ -1,15 +1,15 @@
 import { Layout } from "antd";
+import Car from "./views/Car";
 import { styles } from "./styles";
 import Login from "./views/Auth/Login";
+import PublicRoute from "./PublicRoute";
+import Category from "./views/Category";
 import { ROUTES } from "./utils/constant";
 import Dashboard from "./views/Dashboard";
 import PrivateRoute from "./ProtectedRoute";
 import { Routes, Route } from "react-router-dom";
 import HeaderComponent from "./components/Header";
 import { useAuthContext } from "./hooks/useAuthContext";
-import PublicRoute from "./PublicRoute";
-import Category from "./views/Category";
-import Car from "./views/Car";
 
 const Router = () => {
   const { user } = useAuthContext();

@@ -3,6 +3,7 @@ export const ROUTES = {
   LOGIN: "/login",
   CATEGORY: "/category",
   CAR: "/car",
+  ADD_CATEGORY: "/add-category",
 };
 
 export const MENU_ITEM_KEYS = {
@@ -12,6 +13,7 @@ export const MENU_ITEM_KEYS = {
 };
 
 export const MESSAGES = {
+  DELETE_CATEGORY: "Are You Sure, You want to Delete Category.",
   PROJECT_ADD_SUCCESS: "New Project Has Been Added",
   VACATION_ADD_SUCCESS: "New Vacation Has Been Added",
   RESOURCE_ALLOCATE_SUCCESS: "Resource Allocated",
@@ -23,9 +25,10 @@ export const MESSAGES = {
   PROJECT_DEACTIVATE_SUCCESS: "Project Has Been Paused",
   CLIENT_ADD_SUCCESS: "New Client Has Been Added",
   RESOURCE_REQUEST_SUCCESS: "Resource Has Been Requested Successfully",
-  RESOURCE_ADD_SUCCESS: "Resource Has Been added Successfully",
-  RESOURCE_EDIT_SUCCESS: "Resource Has Been edited Successfully",
+  CATEGORY_ADD_SUCCESS: "Category Has Been added Successfully",
+  CATEGORY_EDIT_SUCCESS: "Category Has Been edited Successfully",
   ERROR: "Some Error Occured",
+  CATEGORY_DELETED: "🗑 Category deleted successfully",
   RESOURCE_REMOVE_SUCCESS: "Resource removed successfully",
   LOGIN_SUCCESS: "Logged in successfully",
   SKILL_CREATED: "Skill created successfully",
@@ -43,7 +46,7 @@ export const MESSAGES = {
   REMOVE_VACATION: "Vacation Removed",
   ERROR_OCCURED: "Error Occured",
   SKILL_CREATE_ERROR: "Failed to create Skill",
-  RESOURCE_NAME_ERROR: "Please enter a name for the Resource!",
+  CATEGORY_NAME_ERROR: "Please enter a name for the Category!",
   RESOURCE_ACTIVATION_WARNING_MESSAGE:
     "Are you sure you want to activate this resource?",
   RESOURCE_DEACTIVATION_WARNING_MESSAGE:
@@ -116,4 +119,36 @@ export const LOCAL_STORAGE = {
 
 export const TITLES = {
   NO_OF_REGISTERED_CARS: "Registerd Cars",
+  EDIT_CATEGORY: "Edit Category",
+  ADD_CATEGORY: "Add Category",
+};
+
+export const BUTTON_TITLES = {
+  EDIT: "Edit",
+  DELETE: "Delete",
+  ADD: "Add",
+  ADD_CATEGORY: "Add Category",
+};
+
+export const POPOVER_TITLES = {
+  DELETE_CATEGORY: "Delete Category",
+};
+
+export const ACTION_ITEMS = [
+  {
+    action: "edit",
+    value: "Edit",
+  },
+  {
+    action: "delete",
+    value: "Delete",
+  },
+];
+
+export const LABELS = {
+  NAME: "Name",
+};
+
+export const PLACE_HOLDERS = {
+  CATEGORY_NAME: "Category Name",
 };
