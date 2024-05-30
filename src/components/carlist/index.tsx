@@ -78,7 +78,6 @@ export default function CarList() {
         onChange={(paginationParams: any, filter: any, sorter: any) => {
           setPagination(() => paginationParams);
           setSortedInfo(() => sorter);
-          console.log(sorter);
           fetchAllCars(
             `pageNo=${paginationParams?.current}&perPage=${
               paginationParams?.pageSize
