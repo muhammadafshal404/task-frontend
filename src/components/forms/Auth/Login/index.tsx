@@ -30,9 +30,12 @@ const LoginForm = () => {
       password: values?.password,
     };
     const response: any = await loginUser(payload);
-    if (response?.access_token) {
-      localStorage.setItem("token", JSON.stringify(response?.access_token));
-      await login(JSON.stringify(response?.access_token));
+    if (response?.data?.access_token) {
+      localStorage.setItem(
+        "token",
+        JSON.stringify(response?.data?.access_token)
+      );
+      await login(JSON.stringify(response?.data?.access_token));
       notification.open({
         message: MESSAGES.LOGIN_SUCCESS,
       });

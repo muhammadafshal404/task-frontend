@@ -14,6 +14,7 @@ export const MENU_ITEM_KEYS = {
 
 export const MESSAGES = {
   DELETE_CATEGORY: "Are You Sure, You want to Delete Category.",
+  DELETE_CAR: "Are You Sure, You want to Delete Car.",
   PROJECT_ADD_SUCCESS: "New Project Has Been Added",
   VACATION_ADD_SUCCESS: "New Vacation Has Been Added",
   RESOURCE_ALLOCATE_SUCCESS: "Resource Allocated",
@@ -27,8 +28,11 @@ export const MESSAGES = {
   RESOURCE_REQUEST_SUCCESS: "Resource Has Been Requested Successfully",
   CATEGORY_ADD_SUCCESS: "Category Has Been added Successfully",
   CATEGORY_EDIT_SUCCESS: "Category Has Been edited Successfully",
+  CAR_ADD_SUCCESS: "Car Has Been added Successfully",
+  CAR_EDIT_SUCCESS: "Car Has Been edited Successfully",
   ERROR: "Some Error Occured",
   CATEGORY_DELETED: "🗑 Category deleted successfully",
+  CAR_DELETED: "🗑 Car deleted successfully",
   RESOURCE_REMOVE_SUCCESS: "Resource removed successfully",
   LOGIN_SUCCESS: "Logged in successfully",
   SKILL_CREATED: "Skill created successfully",
@@ -47,6 +51,8 @@ export const MESSAGES = {
   ERROR_OCCURED: "Error Occured",
   SKILL_CREATE_ERROR: "Failed to create Skill",
   CATEGORY_NAME_ERROR: "Please enter a name for the Category!",
+
+  CAR_REGISTRATION_NO_ERROR: "Please enter a Registration No for the Car!",
   RESOURCE_ACTIVATION_WARNING_MESSAGE:
     "Are you sure you want to activate this resource?",
   RESOURCE_DEACTIVATION_WARNING_MESSAGE:
@@ -108,6 +114,8 @@ export const MESSAGES = {
   NOTE_DELETED: "Note Deleted Successfully",
   NOTE_DELETE_WARNING: "Are You sure, You want to delete note.",
   DELETE_NOTE: "Delete Note",
+  CAR_MODEL_ERROR: "Please Enter Model For Car!",
+  CAR_COLOR_ERROR: "Please Enter Color For Car!",
 };
 
 export const AUTH_TOKEN = "Authorization";
@@ -121,6 +129,8 @@ export const TITLES = {
   NO_OF_REGISTERED_CARS: "Registerd Cars",
   EDIT_CATEGORY: "Edit Category",
   ADD_CATEGORY: "Add Category",
+  ADD_CAR: "Add Car",
+  EDIT_CAR: "Edit Car",
 };
 
 export const BUTTON_TITLES = {
@@ -128,10 +138,12 @@ export const BUTTON_TITLES = {
   DELETE: "Delete",
   ADD: "Add",
   ADD_CATEGORY: "Add Category",
+  ADD_CAR: "Add Car",
 };
 
 export const POPOVER_TITLES = {
   DELETE_CATEGORY: "Delete Category",
+  DELETE_CAR: "Delete Car",
 };
 
 export const ACTION_ITEMS = [
@@ -147,8 +159,16 @@ export const ACTION_ITEMS = [
 
 export const LABELS = {
   NAME: "Name",
+  REGISTRATION_NO: "Registration No",
+  COLOR: "Color",
+  MODEL: "Model",
+  CATEGORY: "Category",
 };
 
 export const PLACE_HOLDERS = {
   CATEGORY_NAME: "Category Name",
+  REGISTRATION_NO: "Registration No",
+  COLOR: "Color",
+  MODEL: "Model",
+  SELECT_CATEGORY: "Select Category",
 };
