@@ -17,3 +17,12 @@ export const getMe = async () => {
     return err;
   }
 };
+
+export const signup = async (body: object) => {
+  try {
+    const response = await doPost("/auth/signup", body, false);
+    return response;
+  } catch (err) {
+    err;
+  }
+};

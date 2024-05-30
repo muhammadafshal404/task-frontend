@@ -155,7 +155,16 @@ const CarForm = ({ id, hideAddNoteModal, fetchAllCars }: CarFormInterface) => {
         </Row>
         <Row>
           <Col xs={24} lg={24}>
-            <Form.Item name="category_id" label={LABELS.CATEGORY}>
+            <Form.Item
+              name="category_id"
+              label={LABELS.CATEGORY}
+              rules={[
+                {
+                  required: true,
+                  message: `${MESSAGES.CATEGORY_REQUIRED}`,
+                },
+              ]}
+            >
               <Select
                 placeholder={PLACE_HOLDERS.SELECT_CATEGORY}
                 options={categories}

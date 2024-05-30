@@ -3,11 +3,17 @@ import { styles } from "./styles";
 import { FormStyles } from "../../styles";
 import Loader from "../../../common/Loader";
 import Title from "antd/lib/typography/Title";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { combineStyles } from "../../../../utils";
 import logo from "../../../../assets/logo/logo.png";
 import { loginUser } from "../../../../apis/auth.api";
-import { MESSAGES, ROUTES } from "../../../../utils/constant";
+import {
+  BUTTON_TITLES,
+  MESSAGES,
+  REDIRECTION_TEXTS,
+  ROUTES,
+  TITLES,
+} from "../../../../utils/constant";
 import { MailOutlined, UnlockOutlined } from "@ant-design/icons";
 import { Button, Col, Form, Input, Row, notification } from "antd";
 import { useSignin } from "../../../../hooks/useLogin";
@@ -65,7 +71,7 @@ const LoginForm = () => {
           </div>
         </a>
         <Title level={3} style={styles.title}>
-          Login
+          {TITLES.LOGIN}
         </Title>
         <Form
           form={form}
@@ -79,11 +85,11 @@ const LoginForm = () => {
             rules={[
               {
                 type: "email",
-                message: "Please enter a valid email address!",
+                message: MESSAGES.EMAIL_VALIDATION,
               },
               {
                 required: true,
-                message: "Please enter your email address!",
+                message: MESSAGES.EMAIL_REQUIRED,
               },
             ]}
           >
@@ -99,16 +105,15 @@ const LoginForm = () => {
             rules={[
               {
                 required: true,
-                message: "Please enter a password!",
+                message: MESSAGES.PASSWORD_REQUIRED,
               },
               {
                 min: 8, // Minimum password length (customize as needed)
-                message: "Password must be at least 8 characters long!",
+                message: MESSAGES.PASSWORD_LENGTH_VALIDATION,
               },
               {
                 pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/,
-                message:
-                  "Password must contain at least one uppercase letter, one lowercase letter, and one number!",
+                message: MESSAGES.PASSWORD_CHARACTERS_VALIDATION,
               },
             ]}
           >
@@ -132,12 +137,17 @@ const LoginForm = () => {
                   type="primary"
                   htmlType="submit"
                 >
-                  Login
+                  {BUTTON_TITLES.LOGIN}
                 </Button>
               </Form.Item>
             </Col>
           </Row>
         </Form>
+        <div style={styles.signupOption}>
+          <Link to={ROUTES.SIGN_UP}>
+            {REDIRECTION_TEXTS.DO_NOT_HAVE_AN_ACCOUNT}
+          </Link>
+        </div>
         <Row>{loader ? <Loader /> : <></>}</Row>
       </div>
     </div>

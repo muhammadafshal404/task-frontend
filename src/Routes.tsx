@@ -4,6 +4,7 @@ import { styles } from "./styles";
 import Login from "./views/Auth/Login";
 import PublicRoute from "./PublicRoute";
 import Category from "./views/Category";
+import Signup from "./views/Auth/Signup";
 import { ROUTES } from "./utils/constant";
 import Dashboard from "./views/Dashboard";
 import PrivateRoute from "./ProtectedRoute";
@@ -51,6 +52,14 @@ const Router = () => {
             element={
               <PublicRoute>
                 <Login />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path={ROUTES.SIGN_UP}
+            element={
+              <PublicRoute>
+                <Signup />
               </PublicRoute>
             }
           />
