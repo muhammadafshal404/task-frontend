@@ -14,10 +14,17 @@ export default function CategoryList() {
   const paginationConfig: any = {
     current: 1,
     page: 1,
-    pageSize: 2,
+    pageSize: 5,
   };
   const { logout } = useLogout();
   const [count, setCount] = useState(0);
+  const [sortedInfo, setSortedInfo] = useState<{
+    columnKey: string | null;
+    order: string | null;
+  }>({
+    columnKey: null,
+    order: null,
+  });
   const [loader, setLoader] = useState<boolean>(false);
   const [categories, setCategories] = useState<any>([]);
   const [addNoteModalShown, showAddNoteModal, hideAddNoteModal] =
@@ -26,6 +33,10 @@ export default function CategoryList() {
 
   const fetchAllCategories = async (queryParams?: string) => {
     setLoader(true);
+    if (!queryParams) {
+      setPagination(() => paginationConfig);
+      setSortedInfo(() => ({ columnKey: null, order: null }));
+    }
     const response: any = await getAllCatogories(
       queryParams
         ? queryParams
@@ -40,7 +51,10 @@ export default function CategoryList() {
     }
   };
 
-  const columns = useMemo(() => CategoriesColumns({ fetchAllCategories }), []);
+  const columns = useMemo(
+    () => CategoriesColumns({ fetchAllCategories, sortedInfo }),
+    [sortedInfo]
+  );
 
   useEffect(() => {
     fetchAllCategories(
@@ -56,10 +70,13 @@ export default function CategoryList() {
         </Button>
       </div>
       <Table
-        onChange={(paginationParams: any) => {
+        onChange={(paginationParams: any, filter: any, sorter: any) => {
           setPagination(() => paginationParams);
+          setSortedInfo(() => sorter);
           fetchAllCategories(
-            `pageNo=${paginationParams?.current}&perPage=${paginationParams?.pageSize}`
+            `pageNo=${paginationParams?.current}&perPage=${
+              paginationParams?.pageSize
+            }&${sorter?.order ? "orderBy=" + sorter?.order : ""}`
           );
         }}
         dataSource={categories}
