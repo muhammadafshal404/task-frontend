@@ -62,9 +62,9 @@ const CarForm = ({ id, hideAddNoteModal, fetchAllCars }: CarFormInterface) => {
 
   const fetchCategories = async () => {
     setLoader(true);
-    const response: any = await getAllCatogories();
+    const response: any = await getAllCatogories("");
     setCategories(() =>
-      response?.data?.map?.((category: any) => ({
+      response?.data?.rows?.map?.((category: any) => ({
         label: category.name,
         value: category.id,
         key: category.id,

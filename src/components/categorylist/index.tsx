@@ -11,20 +11,31 @@ import { getAllCatogories } from "../../apis/category.api";
 import { BUTTON_TITLES, TITLES } from "../../utils/constant";
 
 export default function CategoryList() {
+  const paginationConfig: any = {
+    current: 1,
+    page: 1,
+    pageSize: 2,
+  };
   const { logout } = useLogout();
+  const [count, setCount] = useState(0);
   const [loader, setLoader] = useState<boolean>(false);
   const [categories, setCategories] = useState<any>([]);
   const [addNoteModalShown, showAddNoteModal, hideAddNoteModal] =
     useModalState();
+  const [pagination, setPagination] = useState(paginationConfig);
 
-  const fetchAllCategories = async () => {
+  const fetchAllCategories = async (queryParams?: string) => {
     setLoader(true);
-    const response: any = await getAllCatogories();
+    const response: any = await getAllCatogories(
+      queryParams
+        ? queryParams
+        : `pageNo=${paginationConfig?.current}&perPage=${paginationConfig?.pageSize}`
+    );
     if (response?.statusCode == 401) {
       logout();
     } else {
-      setCategories(() => response?.data);
-
+      setCategories(() => response?.data?.rows);
+      setCount(() => response?.data?.count);
       setLoader(false);
     }
   };
@@ -32,7 +43,9 @@ export default function CategoryList() {
   const columns = useMemo(() => CategoriesColumns({ fetchAllCategories }), []);
 
   useEffect(() => {
-    fetchAllCategories();
+    fetchAllCategories(
+      `pageNo=${pagination?.current}&perPage=${pagination?.pageSize}`
+    );
   }, []);
 
   return (
@@ -42,7 +55,18 @@ export default function CategoryList() {
           {BUTTON_TITLES.ADD_CATEGORY}
         </Button>
       </div>
-      <Table dataSource={categories} loading={loader} columns={columns} />
+      <Table
+        onChange={(paginationParams: any) => {
+          setPagination(() => paginationParams);
+          fetchAllCategories(
+            `pageNo=${paginationParams?.current}&perPage=${paginationParams?.pageSize}`
+          );
+        }}
+        dataSource={categories}
+        loading={loader}
+        columns={columns}
+        pagination={{ ...pagination, total: count }}
+      />
       <CustomModal
         title={TITLES.ADD_CATEGORY}
         centered={true}

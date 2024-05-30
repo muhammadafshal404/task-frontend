@@ -1,8 +1,8 @@
 import { doDelete, doGet, doPatch, doPost } from "../utils/request";
 
-export const getAllCatogories = async () => {
+export const getAllCatogories = async (pagination: string) => {
   try {
-    const response = await doGet("/category");
+    const response = await doGet(`/category?${pagination}`);
     return response;
   } catch (err) {
     return err;

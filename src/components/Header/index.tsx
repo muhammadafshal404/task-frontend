@@ -2,47 +2,47 @@ import { styles } from "./styles";
 import Menu from "../common/Menu";
 import MenuItem from "../common/MenuItem";
 import { combineStyles } from "../../utils";
-import { useContext, useState } from "react";
 import logo from "../../assets/logo/logo.png";
 import DrawerComponent from "../common/Drawer";
 import { useLogout } from "../../hooks/useLogout";
 import { ConfigProvider, Grid, Layout } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import { MENU_ITEM_KEYS, ROUTES } from "../../utils/constant";
 import { ConfigConsumerProps } from "antd/lib/config-provider";
 import { LogoutOutlined, MenuOutlined } from "@ant-design/icons";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const { Header } = Layout;
 
 export default function HeaderComponent() {
-  const user = localStorage.getItem("token");
   const navigate = useNavigate();
-
-  const [selectedRoute, setSelectedRoute] = useState(MENU_ITEM_KEYS.ROOT);
+  const { pathname } = useLocation();
+  const user = localStorage.getItem("token");
+  const [selectedRoute, setSelectedRoute] = useState<any>();
   const themeConfiguration = useContext(ConfigProvider.ConfigContext);
   const [headerDrawerOpen, setHeaderDrawerOpen] = useState<boolean>(false);
   const { md } = Grid.useBreakpoint();
   const { logout } = useLogout();
-
+  useEffect(() => {
+    const path = pathname.split("/")?.[1] ?? "";
+    if (!path) {
+      setSelectedRoute(() => MENU_ITEM_KEYS.ROOT);
+    } else if (path === ROUTES.CATEGORY.split("/")?.[1]?.toLowerCase()) {
+      setSelectedRoute(() => MENU_ITEM_KEYS.CATEGORIES);
+    } else if (path === ROUTES.CAR.split("/")?.[1]?.toLowerCase()) {
+      setSelectedRoute(() => MENU_ITEM_KEYS.CARS);
+    }
+  }, [pathname]);
   const MenuItems = (
     <>
-      <MenuItem
-        key={MENU_ITEM_KEYS.ROOT}
-        onClick={(value) => setSelectedRoute(() => value?.key)}
-      >
-        <Link to={ROUTES.ROOT}>Dashboard</Link>
+      <MenuItem key={MENU_ITEM_KEYS.ROOT}>
+        <Link to={ROUTES.ROOT}>{MENU_ITEM_KEYS.ROOT}</Link>
       </MenuItem>
-      <MenuItem
-        key={MENU_ITEM_KEYS.CATEGORIES}
-        onClick={(value) => setSelectedRoute(() => value?.key)}
-      >
-        <Link to={ROUTES.CATEGORY}>Categories</Link>
+      <MenuItem key={MENU_ITEM_KEYS.CATEGORIES}>
+        <Link to={ROUTES.CATEGORY}>{MENU_ITEM_KEYS.CATEGORIES}</Link>
       </MenuItem>
-      <MenuItem
-        key={MENU_ITEM_KEYS.CARS}
-        onClick={(value) => setSelectedRoute(() => value?.key)}
-      >
-        <Link to={ROUTES.CAR}>Cars</Link>
+      <MenuItem key={MENU_ITEM_KEYS.CARS}>
+        <Link to={ROUTES.CAR}>{MENU_ITEM_KEYS.CARS}</Link>
       </MenuItem>
     </>
   );
