@@ -1,4 +1,4 @@
-import { doDelete, doGet, doPatch, doPost } from "../utils/request";
+import { doDelete, doGet, doPost, doPut } from "../utils/request";
 
 export const getAllCatogories = async (pagination: string) => {
   try {
@@ -20,7 +20,7 @@ export const getCategory = async (id: string) => {
 
 export const editCategory = async (body: object, id: string) => {
   try {
-    const response = await doPatch(`/category/${id}`, body);
+    const response = await doPut(`/category/${id}`, body);
     return response;
   } catch (err: any) {
     return err;

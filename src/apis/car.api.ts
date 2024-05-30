@@ -1,4 +1,4 @@
-import { doDelete, doGet, doPatch, doPost } from "../utils/request";
+import { doDelete, doGet, doPost, doPut } from "../utils/request";
 
 export const dashboardStats = async () => {
   try {
@@ -29,7 +29,7 @@ export const getCar = async (id: string) => {
 
 export const editCar = async (body: object, id: string) => {
   try {
-    const response = await doPatch(`/car/${id}`, body);
+    const response = await doPut(`/car/${id}`, body);
     return response;
   } catch (err: any) {
     return err;
