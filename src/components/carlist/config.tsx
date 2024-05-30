@@ -1,7 +1,7 @@
 import styles from "./styles";
 import Actions from "../CarActions";
 
-export const CarsColumns = ({ fetchAllCars }: any) => [
+export const CarsColumns = ({ fetchAllCars, sortedInfo }: any) => [
   {
     title: () => <div style={styles.columns}>Registration No</div>,
     key: "registration_no",
@@ -9,6 +9,9 @@ export const CarsColumns = ({ fetchAllCars }: any) => [
     render: (record: string) => {
       return <div style={styles.columns}>{record}</div>;
     },
+    sorter: true,
+    sortOrder:
+      sortedInfo.columnKey === "registration_no" ? sortedInfo.order : null,
   },
   {
     title: () => <div style={styles.columns}>Model</div>,
@@ -17,6 +20,8 @@ export const CarsColumns = ({ fetchAllCars }: any) => [
     render: (record: string) => {
       return <div style={styles.columns}>{record}</div>;
     },
+    sorter: true,
+    sortOrder: sortedInfo.columnKey === "model" ? sortedInfo.order : null,
   },
   {
     title: () => <div style={styles.columns}>Color</div>,

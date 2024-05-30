@@ -27,9 +27,9 @@ export default function CategoryList() {
   });
   const [loader, setLoader] = useState<boolean>(false);
   const [categories, setCategories] = useState<any>([]);
+  const [pagination, setPagination] = useState(paginationConfig);
   const [addNoteModalShown, showAddNoteModal, hideAddNoteModal] =
     useModalState();
-  const [pagination, setPagination] = useState(paginationConfig);
 
   const fetchAllCategories = async (queryParams?: string) => {
     setLoader(true);

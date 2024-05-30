@@ -1,3 +1,4 @@
+import CarForm from "../car";
 import styles from "./styles";
 import CustomModal from "../Modal";
 import { Button, Table } from "antd";
@@ -8,36 +9,62 @@ import { useLogout } from "../../hooks/useLogout";
 import { useState, useMemo, useEffect } from "react";
 import { useModalState } from "../../hooks/useModalState";
 import { BUTTON_TITLES, TITLES } from "../../utils/constant";
-import CarForm from "../car";
 
 export default function CarList() {
+  const paginationConfig: any = {
+    current: 1,
+    page: 1,
+    pageSize: 5,
+  };
   const { logout } = useLogout();
   const [cars, setCars] = useState<any>([]);
+  const [total, setTotal] = useState<Number>(0);
   const [loader, setLoader] = useState<boolean>(false);
+  const [sortedInfo, setSortedInfo] = useState<{
+    columnKey: string | null;
+    order: string | null;
+  }>({
+    columnKey: null,
+    order: null,
+  });
+  const [pagination, setPagination] = useState(paginationConfig);
   const [addNoteModalShown, showAddNoteModal, hideAddNoteModal] =
     useModalState();
 
-  const fetchAllCars = async () => {
+  const fetchAllCars = async (queryParams?: string) => {
     setLoader(true);
-    const response: any = await getAllCars();
+    if (!queryParams) {
+      setPagination(() => paginationConfig);
+      setSortedInfo(() => ({ columnKey: null, order: null }));
+    }
+    const response: any = await getAllCars(
+      queryParams
+        ? queryParams
+        : `pageNo=${paginationConfig?.current}&perPage=${paginationConfig?.pageSize}`
+    );
     if (response?.statusCode == 401) {
       logout();
     } else {
       setCars(() =>
-        response?.data?.map?.((car: any) => ({
+        response?.data?.rows?.map?.((car: any) => ({
           ...car,
           category: car?.category?.name,
         }))
       );
-
+      setTotal(() => response?.data?.count);
       setLoader(false);
     }
   };
 
-  const columns = useMemo(() => CarsColumns({ fetchAllCars }), []);
+  const columns = useMemo(
+    () => CarsColumns({ fetchAllCars, sortedInfo }),
+    [sortedInfo]
+  );
 
   useEffect(() => {
-    fetchAllCars();
+    fetchAllCars(
+      `pageNo=${pagination?.current}&perPage=${pagination?.pageSize}`
+    );
   }, []);
 
   return (
@@ -47,7 +74,26 @@ export default function CarList() {
           {BUTTON_TITLES.ADD_CAR}
         </Button>
       </div>
-      <Table dataSource={cars} loading={loader} columns={columns} />
+      <Table
+        onChange={(paginationParams: any, filter: any, sorter: any) => {
+          setPagination(() => paginationParams);
+          setSortedInfo(() => sorter);
+          console.log(sorter);
+          fetchAllCars(
+            `pageNo=${paginationParams?.current}&perPage=${
+              paginationParams?.pageSize
+            }&${
+              sorter?.order && sorter?.columnKey
+                ? "orderBy=" + sorter?.columnKey + "&order=" + sorter?.order
+                : ""
+            }`
+          );
+        }}
+        dataSource={cars}
+        loading={loader}
+        columns={columns}
+        pagination={{ ...pagination, total }}
+      />
       <CustomModal
         title={TITLES.ADD_CAR}
         centered={true}

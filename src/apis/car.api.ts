@@ -9,9 +9,9 @@ export const dashboardStats = async () => {
   }
 };
 
-export const getAllCars = async () => {
+export const getAllCars = async (pagination: string) => {
   try {
-    const response = await doGet("/car");
+    const response = await doGet(`/car?${pagination}`);
     return response;
   } catch (err) {
     return err;

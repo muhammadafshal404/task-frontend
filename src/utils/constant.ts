@@ -55,7 +55,7 @@ export const LOCAL_STORAGE = {
 };
 
 export const TITLES = {
-  NO_OF_REGISTERED_CARS: "Registerd Cars",
+  NO_OF_REGISTERED_CARS: "Registered Cars",
   EDIT_CATEGORY: "Edit Category",
   ADD_CATEGORY: "Add Category",
   ADD_CAR: "Add Car",
