@@ -21,7 +21,9 @@ This Project is About Managing the Cars and Car Categories, Where you Can Add/ E
    cd your-project-name
 
 3. Install project dependencies
+   ```
    npm install or yarn install if you prefer yarn
+   ```
 
 ### Configuration
 
@@ -36,7 +38,6 @@ This Project is About Managing the Cars and Car Categories, Where you Can Add/ E
 ### Usage
 
 1. Start the development server to run the project locally:
-   npm run dev
-   ```(or`yarn dev`)
+   `npm run dev or yarn dev `
 
 - This will typically start a development server at `http://localhost:5173/` (or a different port depending on your configuration). You can access your application in your web browser.
