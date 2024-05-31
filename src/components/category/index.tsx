@@ -80,11 +80,17 @@ const CategoryForm = ({
                 },
                 {
                   validator: (_, value) =>
-                    !value?.startsWith(" ")
-                      ? Promise.resolve()
-                      : Promise.reject(
+                    value?.startsWith(" ")
+                      ? Promise.reject(
                           new Error(MESSAGES.EMPTY_SPACES_NOT_ALLOWED)
-                        ),
+                        )
+                      : !/^[a-zA-Z0-9\s]+$/.test(value)
+                      ? Promise.reject(
+                          new Error(
+                            MESSAGES.ONLY_ALPHANUMERIC_VALUES_AND_SPACE_ALLOWED
+                          )
+                        )
+                      : Promise.resolve(),
                 },
               ]}
             >

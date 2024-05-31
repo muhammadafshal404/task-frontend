@@ -45,6 +45,9 @@ export const MESSAGES = {
   PASSWORD_CHARACTERS_VALIDATION:
     "Password must contain at least one uppercase letter, one lowercase letter, and one number!",
   EMPTY_SPACES_NOT_ALLOWED: "Please remove empty spaces from this field.",
+  ONLY_NUMBERS_ALLOW: "Please Enter only Numeric Values.",
+  ONLY_ALPHANUMERIC_VALUES_AND_SPACE_ALLOWED:
+    "Only alphanumeric characters and spaces allowed",
 };
 
 export const AUTH_TOKEN = "Authorization";

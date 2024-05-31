@@ -18,8 +18,8 @@ export default function DashboardComponent() {
       logout();
     } else {
       if (result?.statusCode == 200) {
-        const resourceList = result?.data;
-        setTotalCount(resourceList);
+        const carsTotal = result?.data;
+        setTotalCount(carsTotal);
         setLoader(false);
       } else {
         notification.open({

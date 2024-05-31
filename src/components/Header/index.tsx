@@ -91,7 +91,7 @@ export default function HeaderComponent() {
         )}
       </div>
       <DrawerComponent
-        title="Resource Ally"
+        title="CarSense"
         open={headerDrawerOpen}
         onClose={() => setHeaderDrawerOpen(false)}
       >

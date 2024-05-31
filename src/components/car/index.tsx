@@ -14,6 +14,7 @@ import {
   MESSAGES,
   PLACE_HOLDERS,
 } from "../../utils/constant";
+import Label from "../label";
 import { styles } from "./styles";
 import Loader from "../common/Loader";
 import { useState, useEffect } from "react";
@@ -85,7 +86,11 @@ const CarForm = ({ id, hideAddNoteModal, fetchAllCars }: CarFormInterface) => {
           <Col xs={24} lg={24}>
             <Form.Item
               name="registration_no"
-              label={LABELS.REGISTRATION_NO}
+              label={Label({
+                styles: styles.formItemlabel,
+                text: LABELS.REGISTRATION_NO,
+              })}
+              colon={false}
               rules={[
                 {
                   required: true,
@@ -93,11 +98,17 @@ const CarForm = ({ id, hideAddNoteModal, fetchAllCars }: CarFormInterface) => {
                 },
                 {
                   validator: (_, value) =>
-                    !value?.startsWith(" ")
-                      ? Promise.resolve()
-                      : Promise.reject(
+                    value?.startsWith(" ")
+                      ? Promise.reject(
                           new Error(MESSAGES.EMPTY_SPACES_NOT_ALLOWED)
-                        ),
+                        )
+                      : !/^[a-zA-Z0-9\s]+$/.test(value)
+                      ? Promise.reject(
+                          new Error(
+                            MESSAGES.ONLY_ALPHANUMERIC_VALUES_AND_SPACE_ALLOWED
+                          )
+                        )
+                      : Promise.resolve(),
                 },
               ]}
             >
@@ -109,7 +120,11 @@ const CarForm = ({ id, hideAddNoteModal, fetchAllCars }: CarFormInterface) => {
           <Col xs={24} lg={24}>
             <Form.Item
               name="model"
-              label={LABELS.MODEL}
+              label={Label({
+                styles: styles.formItemlabel,
+                text: LABELS.MODEL,
+              })}
+              colon={false}
               rules={[
                 {
                   required: true,
@@ -117,11 +132,9 @@ const CarForm = ({ id, hideAddNoteModal, fetchAllCars }: CarFormInterface) => {
                 },
                 {
                   validator: (_, value) =>
-                    !value?.startsWith(" ")
-                      ? Promise.resolve()
-                      : Promise.reject(
-                          new Error(MESSAGES.EMPTY_SPACES_NOT_ALLOWED)
-                        ),
+                    !/^[0-9]+$/.test(value)
+                      ? Promise.reject(new Error(MESSAGES.ONLY_NUMBERS_ALLOW))
+                      : Promise.resolve(),
                 },
               ]}
             >
@@ -133,7 +146,11 @@ const CarForm = ({ id, hideAddNoteModal, fetchAllCars }: CarFormInterface) => {
           <Col xs={24} lg={24}>
             <Form.Item
               name="color"
-              label={LABELS.COLOR}
+              label={Label({
+                styles: styles.formItemlabel,
+                text: LABELS.COLOR,
+              })}
+              colon={false}
               rules={[
                 {
                   required: true,
@@ -157,7 +174,11 @@ const CarForm = ({ id, hideAddNoteModal, fetchAllCars }: CarFormInterface) => {
           <Col xs={24} lg={24}>
             <Form.Item
               name="category_id"
-              label={LABELS.CATEGORY}
+              label={Label({
+                styles: styles.formItemlabel,
+                text: LABELS.CATEGORY,
+              })}
+              colon={false}
               rules={[
                 {
                   required: true,

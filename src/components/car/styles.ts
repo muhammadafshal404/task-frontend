@@ -5,6 +5,10 @@ export const styles = createStyles({
     display: "flex",
     justifyContent: "end",
   },
+  formItemlabel: {
+    width: "130px",
+    display: "flex",
+  },
 });
 
 export const formItemLayout = {
