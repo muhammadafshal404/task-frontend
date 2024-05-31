@@ -1,30 +1,39 @@
-# React + TypeScript + Vite
+# Project Name
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CarSense
 
-Currently, two official plugins are available:
+## Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This Project is About Managing the Cars and Car Categories, Where you Can Add/ Edit/ Delete Categories and also Add/ Edit/ Delete Cars corresponing to categories.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+- Node.js and npm (or yarn) installed on your system. You can download them from the official website.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### Installation
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Clone this repository to your local machine using Git:
+   git clone https://github.com/muhammadafshal404/task-frontend.git
+
+2. Navigate to the project directory:
+   cd your-project-name
+
+3. Install project dependencies
+   npm install or yarn install if you prefer yarn
+
+### Configuration
+
+1. Create a file named .env in the root of your project directory. This file will store environment variables that your application needs to run.
+
+2. Add the following environment variable to your .env file, replacing YOUR_BACKEND_SERVER_URL with the actual address of your backend server:
+   VITE_SERVER_URL=YOUR_BACKEND_SERVER_URL
+
+### Usage
+
+1. Start the development server to run the project locally:
+   npm run dev
+   ```(or`yarn dev`)
+
+- This will typically start a development server at `http://localhost:5173/` (or a different port depending on your configuration). You can access your application in your web browser.
