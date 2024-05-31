@@ -4,7 +4,7 @@ CarSense
 
 ## Description
 
-This Project is About Managing the Cars and Car Categories, Where you Can Add/ Edit/ Delete Categories and also Add/ Edit/ Delete Cars corresponing to categories.
+This Project is About Managing the Cars and Categories, Where you Can Add/ Edit/ Delete Categories and also Add/ Edit/ Delete Cars corresponing to categories.
 
 ## Getting Started
 
@@ -14,11 +14,17 @@ This Project is About Managing the Cars and Car Categories, Where you Can Add/ E
 
 ### Installation
 
-1. Clone this repository to your local machine using Git:
-   git clone https://github.com/muhammadafshal404/task-frontend.git
+1. Clone this repository to your local machine using Git
 
-2. Navigate to the project directory:
+   ```
+   git clone https://github.com/muhammadafshal404/task-frontend.git
+   ```
+
+2. Navigate to the project directory
+
+   ```
    cd your-project-name
+   ```
 
 3. Install project dependencies
    ```
@@ -29,7 +35,7 @@ This Project is About Managing the Cars and Car Categories, Where you Can Add/ E
 
 1. Create a file named .env in the root of your project directory. This file will store environment variables that your application needs to run.
 
-2. Add the following environment variable to your .env file, replacing YOUR_BACKEND_SERVER_URL with the actual address of your backend server:
+2. Add the following environment variable to your .env file, replacing `YOUR_BACKEND_SERVER_URL` with the actual address of your backend server
 
 ```
   VITE_SERVER_URL=YOUR_BACKEND_SERVER_URL
@@ -37,7 +43,7 @@ This Project is About Managing the Cars and Car Categories, Where you Can Add/ E
 
 ### Usage
 
-1. Start the development server to run the project locally:
+1. Start the development server to run the project locally
    ```
    npm run dev or yarn dev
    ```
