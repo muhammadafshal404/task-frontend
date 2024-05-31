@@ -28,7 +28,10 @@ This Project is About Managing the Cars and Car Categories, Where you Can Add/ E
 1. Create a file named .env in the root of your project directory. This file will store environment variables that your application needs to run.
 
 2. Add the following environment variable to your .env file, replacing YOUR_BACKEND_SERVER_URL with the actual address of your backend server:
-   VITE_SERVER_URL=YOUR_BACKEND_SERVER_URL
+
+```
+  VITE_SERVER_URL=YOUR_BACKEND_SERVER_URL
+```
 
 ### Usage
 
