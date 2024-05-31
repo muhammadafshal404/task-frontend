@@ -10,7 +10,7 @@ In Signup user needs to enter the email address and he/she will receive an auto-
 
 User can login using that password and email.
 
-Upon Successful login, user is redirected to Main Dashboard displaying the total Number Registered Cars on the Platform.
+Upon Successful login, user is redirected to Main Dashboard displaying the total Number of Registered Cars on the Platform.
 
 Moving to Categories Section, User can manage Categories and In Cars Section Users can Manage Cars.
 
