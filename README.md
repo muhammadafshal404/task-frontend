@@ -4,7 +4,15 @@
 
 ## Description
 
-This Project is About Managing the Cars and Categories, Where you Can Add/ Edit/ Delete Categories and also Add/ Edit/ Delete Cars corresponing to categories.
+There are Signup, Login, Dashboard, Car and Category Pages in this project.
+
+In Signup user needs to enter the email address and he/she will receive an auto-generated password on the provided email.
+
+User can login using that password and email.
+
+Upon Successful login, user is redirected to Main Dashboard displaying the total Number Registered Cars on the Platform.
+
+Moving to Categories Section, User can manage Categories and In Cars Section Users can Manage Cars.
 
 ## Getting Started
 
