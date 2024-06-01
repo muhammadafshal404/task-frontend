@@ -4,6 +4,8 @@
 
 ## Description
 
+The Project is Created in Reatjs Using Vite.
+
 There are Signup, Login, Dashboard, Car and Category Pages in this project.
 
 In Signup user needs to enter the email address and he/she will receive an auto-generated password on the provided email.
